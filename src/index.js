@@ -17,19 +17,19 @@ const genDiff = (filepath1, filepath2) => {
   sortedKeys.map((key) => {
     if (Object.hasOwn(file1, key) && Object.hasOwn(file2, key)) {
       if (file1[key] === file2[key]) {
-        result += `    ${key}: ${file1[key]} \n`;
+        result += `    ${key}: ${file1[key]}\n`;
       } else {
-        result += `  - ${key}: ${file1[key]} \n`;
-        result += `  + ${key}: ${file2[key]} \n`;
+        result += `  - ${key}: ${file1[key]}\n`;
+        result += `  + ${key}: ${file2[key]}\n`;
       }
     }
 
     if (Object.hasOwn(file1, key) && !Object.hasOwn(file2, key)) {
-      result += `  - ${key}: ${file1[key]} \n`;
+      result += `  - ${key}: ${file1[key]}\n`;
     }
 
     if (Object.hasOwn(file2, key) && !Object.hasOwn(file1, key)) {
-      result += `  + ${key}: ${file2[key]} \n`;
+      result += `  + ${key}: ${file2[key]}\n`;
     }
   });
   return `{\n  ${result.trim()}\n}`;
