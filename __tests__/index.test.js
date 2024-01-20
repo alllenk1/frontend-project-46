@@ -16,3 +16,11 @@ test('genDiff at simple JSON files', () => {
 
   expect(genDiff(file1, file2)).toEqual(result);
 });
+
+test('genDiff at simple YML files', () => {
+  const file1 = getFixturePath('file1.yml');
+  const file2 = getFixturePath('file2.yml');
+  const result = readFile('resultJSON.txt');
+
+  expect(genDiff(file1, file2)).toEqual(result);
+});
