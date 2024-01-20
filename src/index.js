@@ -4,8 +4,7 @@ import path from 'node:path';
 import process from 'node:process';
 
 const getAbsolutePath = (filepath) => path.resolve(process.cwd(), filepath);
-const readFile = (filepath) =>
-  fs.readFileSync(getAbsolutePath(filepath), 'utf-8');
+const readFile = (filepath) => fs.readFileSync(getAbsolutePath(filepath), 'utf-8');
 const parseFile = (filepath) => JSON.parse(readFile(filepath));
 
 const genDiff = (filepath1, filepath2) => {
@@ -31,6 +30,7 @@ const genDiff = (filepath1, filepath2) => {
     if (Object.hasOwn(file2, key) && !Object.hasOwn(file1, key)) {
       result += `  + ${key}: ${file2[key]}\n`;
     }
+    return result;
   });
   return `{\n  ${result.trim()}\n}`;
 };
