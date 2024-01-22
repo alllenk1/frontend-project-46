@@ -1,42 +1,29 @@
-import _ from 'lodash';
-import { JSONparser, YMLparser } from './parsers.js';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+import { cwd } from 'process';
+import parseFile from './parsers.js';
+import buildDiff from './buildDiff.js';
+import formatter from './formatters/index.js';
+
+const readfile = (filepath) => {
+  const currentDir = cwd();
+  const absolutePath = resolve(currentDir, filepath);
+  const content = readFileSync(absolutePath, 'utf-8');
+
+  return content;
+};
+
+const getExtension = (file) => file.split('.')[1];
 
 const genDiff = (filepath1, filepath2) => {
-  let result = '';
-  let file1;
-  let file2;
+  const file1 = parseFile(getExtension(filepath1), readfile(filepath1));
+  const file2 = parseFile(getExtension(filepath2), readfile(filepath2));
 
-  const getFormat = (filepath) => filepath.split('.')[1];
-
-  if (getFormat(filepath1) === 'json') {
-    file1 = JSONparser(filepath1);
-    file2 = JSONparser(filepath2);
-  } else if (getFormat(filepath1) === 'yml') {
-    file1 = YMLparser(filepath1);
-    file2 = YMLparser(filepath2);
-  }
-
-  const sortedKeys = _.sortBy(_.union(Object.keys(file1), Object.keys(file2)));
-  sortedKeys.map((key) => {
-    if (Object.hasOwn(file1, key) && Object.hasOwn(file2, key)) {
-      if (file1[key] === file2[key]) {
-        result += `    ${key}: ${file1[key]}\n`;
-      } else {
-        result += `  - ${key}: ${file1[key]}\n`;
-        result += `  + ${key}: ${file2[key]}\n`;
-      }
-    }
-
-    if (Object.hasOwn(file1, key) && !Object.hasOwn(file2, key)) {
-      result += `  - ${key}: ${file1[key]}\n`;
-    }
-
-    if (Object.hasOwn(file2, key) && !Object.hasOwn(file1, key)) {
-      result += `  + ${key}: ${file2[key]}\n`;
-    }
-    return result;
-  });
-  return `{\n  ${result.trim()}\n}`;
+  const diffTree = buildDiff(file1, file2);
+  // console.log('первый файл', file1);
+  // console.log('второй файл', file2);
+  // console.log(JSON.stringify(buildDiff(file1, file2), null, ' '));
+  console.log(formatter(diffTree));
 };
 
 export default genDiff;
