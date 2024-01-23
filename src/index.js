@@ -23,7 +23,7 @@ const genDiff = (filepath1, filepath2) => {
   // console.log('первый файл', file1);
   // console.log('второй файл', file2);
   // console.log(JSON.stringify(buildDiff(file1, file2), null, ' '));
-  console.log(formatter(diffTree));
+  return formatter(diffTree);
 };
 
 export default genDiff;
