@@ -4,7 +4,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f317485112bbe5d860e3/maintainability)](https://codeclimate.com/github/alllenk1/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f317485112bbe5d860e3/test_coverage)](https://codeclimate.com/github/alllenk1/frontend-project-46/test_coverage)
 
-### examples of use as a console utility:
+Вычислитель отличий – программа, определяющая разницу между двумя структурами данных.
 
 #### JSON simple tree
 
