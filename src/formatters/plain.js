@@ -26,8 +26,6 @@ const plain = (data) => {
           return `Property '${newPath}' was updated. From ${stringify(oldValue)} to ${stringify(value)}`;
         case 'hasChild':
           return iter(value, newPath);
-        default:
-          throw new Error("I don't know this type");
       }
     });
     return strings.filter((item) => item !== undefined).join('\n');
