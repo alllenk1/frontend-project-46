@@ -1,8 +1,38 @@
-// import _ from 'lodash';
+import _ from 'lodash';
 
-// const stringify = (entries) => entries.map((entry) => `${entry.value}`);
+const stringify = (data) => {
+  if (_.isObject(data)) {
+    return '[complex value]';
+  }
 
-// const plain = (entries) => {
-// };
+  if (typeof data === 'string') {
+    return `'${data}'`;
+  }
 
-// export default plain;
+  return data;
+};
+
+const plain = (data) => {
+  const iter = (node, path) => {
+    const values = Object.values(node);
+    const strings = values.flatMap(({ key, oldValue, value, type }) => {
+      const newPath = path === '' ? `${key}` : `${path}.${key}`;
+      switch (type) {
+        case 'added':
+          return `Property '${newPath}' was added with value: ${stringify(value)}`;
+        case 'deleted':
+          return `Property '${newPath}' was removed`;
+        case 'changed':
+          return `Property '${newPath}' was updated. From ${stringify(oldValue)} to ${stringify(value)}`;
+        case 'hasChild':
+          return iter(value, newPath);
+        default:
+          throw new Error("I don't know this type");
+      }
+    });
+    return strings.filter((item) => item !== undefined).join('\n');
+  };
+  return iter(data, '');
+};
+
+export default plain;

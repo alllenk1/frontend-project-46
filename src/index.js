@@ -9,21 +9,16 @@ const readfile = (filepath) => {
   const currentDir = cwd();
   const absolutePath = resolve(currentDir, filepath);
   const content = readFileSync(absolutePath, 'utf-8');
-
   return content;
 };
 
 const getExtension = (file) => file.split('.')[1];
 
-const genDiff = (filepath1, filepath2) => {
+const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const file1 = parseFile(getExtension(filepath1), readfile(filepath1));
   const file2 = parseFile(getExtension(filepath2), readfile(filepath2));
-
   const diffTree = buildDiff(file1, file2);
-  // console.log('первый файл', file1);
-  // console.log('второй файл', file2);
-  // console.log(JSON.stringify(buildDiff(file1, file2), null, ' '));
-  return formatter(diffTree);
+  return formatter(diffTree, format);
 };
 
 export default genDiff;
