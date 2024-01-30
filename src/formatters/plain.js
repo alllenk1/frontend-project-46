@@ -26,6 +26,10 @@ const plain = (data) => {
           return `Property '${newPath}' was updated. From ${stringify(oldValue)} to ${stringify(value)}`;
         case 'hasChild':
           return iter(value, newPath);
+        case 'unchanged':
+          return [];
+        default:
+          throw new Error('something wrong');
       }
     });
     return strings.filter((item) => item !== undefined).join('\n');
