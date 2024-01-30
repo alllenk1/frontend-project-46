@@ -7,11 +7,15 @@ Can work with JSON and YML. Outputs the result in three formats: stylish (defaul
 
 ### Install
 Clone this repo: 
-```git clone https://github.com/alllenk1/frontend-project-46.git```
+```
+git clone https://github.com/alllenk1/frontend-project-46.git
+```
 
 Install package: 
-```make install```
-```npm link```
+```
+make install
+npm link
+```
 
 ### Usage
 To read help:
