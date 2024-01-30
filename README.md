@@ -30,7 +30,7 @@ Utility can work with formats stylish (default), plain and json
 ### Examples
 
 #### Help and version
-[![asciicast](https://asciinema.org/a/634480.svg)](https://asciinema.org/a/634480)
+[![asciicast](https://asciinema.org/a/634487.svg)](https://asciinema.org/a/634487)
 
 #### Two JSON files with nested objects compare (stylish formatter)
 [![asciicast](https://asciinema.org/a/634483.svg)](https://asciinema.org/a/634483)
