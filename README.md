@@ -7,24 +7,24 @@ Can work with JSON and YML. Outputs the result in three formats: stylish (defaul
 
 ### Install
 Clone this repo: 
-`git clone https://github.com/alllenk1/frontend-project-46.git`
+```git clone https://github.com/alllenk1/frontend-project-46.git```
 
 Install package: 
-`make install`
-`npm link`
+```make install```
+```npm link```
 
 ### Usage
 To read help:
-`gendiff -h`
+```gendiff -h```
 
 To see version:
-`gendiff -V`
+```gendiff -V```
 
 To compare two files:
-`gendiff <path to file1> <path to file2>`
+```gendiff <path to file1> <path to file2>```
 
 To select the output format:
-`gendiff --format plain <path to file1> <path to file2>`
+```gendiff --format plain <path to file1> <path to file2>```
 Utility can work with formats stylish (default), plain and json
 
 ### Examples
