@@ -24,7 +24,12 @@ const buildDiff = (obj1, obj2) => {
     if (typeof value1 === 'object' && typeof value2 === 'object') {
       return { key, value: buildDiff(value1, value2), type: 'hasChild' };
     }
-    return { key, oldValue: value1, value: value2, type: 'changed' };
+    return {
+      key,
+      oldValue: value1,
+      value: value2,
+      type: 'changed',
+    };
   });
   return resultObj;
 };

@@ -9,7 +9,6 @@ parserOptions:
 rules:
   no-underscore-dangle: [2, { 'allow': ['__filename', '__dirname'] }]
   no-console: 0
-  object-curly-newline: 0
   import/extensions:
     - error
     - js: always
