@@ -1,10 +1,7 @@
 import _ from 'lodash';
 
 const buildDiff = (obj1, obj2) => {
-  const key1 = Object.keys(obj1);
-  const key2 = Object.keys(obj2);
-
-  const sortedUnicKeys = _.sortBy(_.union(key1, key2));
+  const sortedUnicKeys = _.sortBy(_.union(Object.keys(obj1), Object.keys(obj2)));
   const resultObj = sortedUnicKeys.map((key) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
