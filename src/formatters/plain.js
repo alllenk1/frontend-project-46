@@ -13,14 +13,12 @@ const stringify = (data) => {
 };
 
 const plain = (data) => {
-  const iter = (node, path) => {
-    const values = Object.values(node);
-    const strings = values.flatMap(({ 
-      key, 
-      oldValue, 
-      value, 
-      type 
-    }) => {
+  const iter = (obj, path) => {
+    const values = Object.values(obj);
+    const strings = values.flatMap((node) => {
+      const {
+        key, oldValue, value, type,
+      } = node;
       const newPath = path === '' ? `${key}` : `${path}.${key}`;
       switch (type) {
         case 'added':

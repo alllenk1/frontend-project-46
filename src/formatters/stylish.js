@@ -14,14 +14,12 @@ const stringify = (data, depth) => {
 };
 
 const stylish = (data) => {
-  const iter = (node, depth) => {
+  const iter = (obj, depth) => {
     const currentReplacer = replacer.repeat(depth);
-    const result = node.flatMap(({ 
-      key, 
-      oldValue, 
-      value, 
-      type 
-    }) => {
+    const result = obj.flatMap((node) => {
+      const {
+        key, oldValue, value, type,
+      } = node;
       switch (type) {
         case 'added':
           return `${currentReplacer}  + ${key}: ${stringify(value, depth + 1)}`;
