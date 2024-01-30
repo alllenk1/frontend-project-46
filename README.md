@@ -11,6 +11,11 @@ Clone this repo:
 git clone https://github.com/alllenk1/frontend-project-46.git
 ```
 
+Go to the project folder: 
+```
+cd frontend-project-46
+```
+
 Install package: 
 ```
 make install
