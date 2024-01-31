@@ -2,7 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/f317485112bbe5d860e3/maintainability)](https://codeclimate.com/github/alllenk1/frontend-project-46/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f317485112bbe5d860e3/test_coverage)](https://codeclimate.com/github/alllenk1/frontend-project-46/test_coverage)
 
-Gendiff is a command line utility that compares two files and prints the result of the comparison.
+Gendiff is a command line utility that compares two files and prints the result.
 Can work with JSON and YML. Outputs the result in three formats: stylish (default), plain and json.
 
 ### Install
